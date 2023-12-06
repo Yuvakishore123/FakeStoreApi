@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Axios </h1>
+      <h1>Fakestore Api </h1>
       {isError !== "" && <h2>{isError}</h2>}
 
       <div className="grid">

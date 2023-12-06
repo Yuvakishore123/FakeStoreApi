@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgb(18, 105, 182);
 }
 
 .App-logo {
@@ -36,3 +37,20 @@
     transform: rotate(360deg);
   }
 }
+.grid {
+  align-items: center;
+  grid-column: auto;
+  grid-auto-rows: 3;
+  row-gap: 3;
+}
+.card{
+  width: 22%;
+  box-shadow: 0 4px 8px 0 rgba(167, 25, 25, 0.2);
+  padding: 2px 16px;
+  margin: 20px;
+  float: left;
+ }
+ .card:hover{
+     transition: 0.3s;
+ }
+ 

@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
 
-function App() {
+const App = () => {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((response) => setMyData(response.data))
+      .catch((error) => setIsError(error.message));
+  }, []);
+  console.log(myData)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <h1>Axios </h1>
+      {isError !== "" && <h2>{isError}</h2>}
 
-export default App;
+      <div className="grid">
+        {myData.map((post) => {
+          const { description, id, title,image } = post;
+          return (
+            <div key={id} className="card">
+              <h2>{title}</h2>
+              <p>{description}</p>
+              <img className="card" src={image} alt="item-pic"/>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default App; 
